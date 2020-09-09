@@ -33,32 +33,27 @@ public class Controls : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Rigidbody2D rb = this.gameObject.GetComponent<Rigidbody2D>() as Rigidbody2D;
-
+        Rigidbody2D rb = this.gameObject.GetComponent<Rigidbody2D>();
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             currentDirection = Direction.UP;
-            Debug.Log("up pressed " + gameObject);
             rb.velocity = UP_SPEED;
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             currentDirection = Direction.DOWN;
-            Debug.Log("down pressed");
             rb.velocity = DOWN_SPEED;
         }
         if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             currentDirection = Direction.LEFT;
-            Debug.Log("Left pressed");
             rb.velocity = LEFT_SPEED;
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             currentDirection = Direction.RIGHT;
-            Debug.Log("Right pressed");
             rb.velocity = RIGHT_SPEED;
         }
 
