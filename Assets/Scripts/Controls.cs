@@ -16,6 +16,9 @@ public class Controls : MonoBehaviour
 
     }
 
+
+    private Vector2Int gridPosition; 
+
     Direction currentDirection = Direction.NONE;
 
     private static Vector2 UP_SPEED = new Vector2(0, SPEED);
@@ -23,6 +26,10 @@ public class Controls : MonoBehaviour
     private static Vector2 LEFT_SPEED = new Vector2(-1 * SPEED, 0);
     private static Vector2 RIGHT_SPEED = new Vector2(SPEED, 0);
 
+    private void Awake()
+    {
+        gridPosition = new Vector2Int(0, 0);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +64,7 @@ public class Controls : MonoBehaviour
             rb.velocity = RIGHT_SPEED;
         }
 
+        transform.position = new Vector3(gridPosition.x, gridPosition.y);
 
     }
 }
