@@ -5,9 +5,10 @@ using UnityEngine;
 public class Food : MonoBehaviour
 {
 
+    private Vector3 zeroVector = new Vector3(0, 0);
+
     public GameHandler gameHandler;
 
-    public SnakePart snakeHead;
 
 
     // Start is called before the first frame update
@@ -18,10 +19,12 @@ public class Food : MonoBehaviour
 
     public void GenerateRandomPositon()
     {
-        Vector3 randomVector = new Vector3(Random.Range(-49, 49), Random.Range(-49, 49));
+        Debug.Log("Parent position: " + transform.parent.localPosition);
+        Vector3 randomVector = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5));
         //   Debug.Log("transforming random, x: " + randomVector.x + ", y: " + randomVector.y);
-        Debug.Log("food created");
-        transform.position = randomVector;
+        Debug.Log("food created: " + randomVector.x + ", " + randomVector.y);
+        //transform.position = zeroVector;
+        transform.localPosition = randomVector;
     }
 
     // Update is called once per frame
@@ -31,6 +34,7 @@ public class Food : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Debug.Log("OnTriggerEnter2D");
         if (collision.attachedRigidbody.tag.Equals("player")) {
             Debug.Log("collision happened with player");
             gameHandler.FoodEaten();

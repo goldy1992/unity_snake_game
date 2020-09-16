@@ -1,21 +1,12 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class GameHandler : MonoBehaviour
 {
-    private static float SPEED = 10f;
+    private static float SPEED = 5f;
 
-    enum Direction
-    {
-        NONE,
-        UP,
-        DOWN,
-        LEFT,
-        RIGHT
-
-    }
-
+    private static int LENGTH = 50;
+ 
     Direction currentDirection = Direction.NONE;
 
     private static readonly Vector2 UP_SPEED = new Vector2(0, SPEED);
@@ -26,10 +17,6 @@ public class GameHandler : MonoBehaviour
     private Vector3 currentVector;
 
     GameObject food;
-
-    public Food foodScript;
-
-    public SnakePart playerScript;
 
     GameObject player;
 
@@ -49,8 +36,6 @@ public class GameHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 translationVector;
-
         // move each tail towards previous tail
         if (tail.Count > 0)
         {
@@ -58,20 +43,19 @@ public class GameHandler : MonoBehaviour
             {
                 for (int i = tail.Count - 1; i > 0; i--)
                 {
-                    GameObject currentTail = (GameObject)tail[i];
-                    GameObject nextTail = (GameObject)tail[i - 1];
-
-                    translationVector = nextTail.transform.position - currentTail.transform.position;
-                    // Debug.Log("transforming tail " + i + " by " + translationVector);
-                    transform.Translate(translationVector * Time.deltaTime * 10);
-                    // currentTail.transform.position = nextTail.transform.position;
+                    SnakePart currentTail = ((GameObject) tail[i]).GetComponent<SnakePart>();
+                    SnakePart nextTail = ((GameObject) tail[i - 1]).GetComponent<SnakePart>();
+                    currentTail.direction = nextTail.direction;
+                    currentTail.transform.localPosition = calculateNewPosition(nextTail.transform.localPosition, nextTail.direction);
                 }
             }
 
-            GameObject firstTail = ((GameObject)tail[tail.Count - 1]);
-            translationVector = player.transform.position - firstTail.transform.position;
+            SnakePart firstTail = ((GameObject)tail[0]).GetComponent<SnakePart>();
+            firstTail.direction = player.GetComponent<SnakePart>().direction;
+            firstTail.transform.localPosition = player.transform.localPosition;
+//            translationVector = player.transform.localPosition - firstTail.transform.localPosition;
        //     Debug.Log("transforming tail first tail by " + translationVector);
-            firstTail.transform.Translate(translationVector * Time.deltaTime * 10);
+  //          firstTail.transform.Translate(translationVector * Time.deltaTime * 10);
 
 
         }
@@ -101,24 +85,46 @@ public class GameHandler : MonoBehaviour
 
 
         // move snake head
-        playerScript.Move(currentVector);
+        player.GetComponent<SnakePart>().Move(currentVector);
     }
 
     public void FoodEaten()
     {
         Debug.Log("food eaten");
-        foodScript.GenerateRandomPositon();
+        food.GetComponent<Food>().GenerateRandomPositon();
         GameObject newBody = Instantiate(snakeBodyPrefab, new Vector3(0, 0), Quaternion.identity);
-        GameObject currentTail = null;
+        SnakePart currentTail = null;
         if (tail.Count > 0)
         {
-            currentTail = (GameObject)tail[tail.Count - 1];
+            currentTail = ((GameObject)tail[tail.Count - 1]).GetComponent<SnakePart>();
         } else {
-            currentTail = player;
+            currentTail = player.GetComponent<SnakePart>();
         }
-        newBody.transform.position = currentTail.transform.position - new Vector3(0, 25);
+        newBody.transform.localPosition = calculateNewPosition(currentTail.transform.localPosition, currentTail.direction);
         tail.Add(newBody);
     }
 
+
+    private Vector3 calculateNewPosition(Vector3 currentPosition, Direction direction)
+    {
+        Vector3 toReturn = currentPosition;
+        switch (direction)
+        {
+            case Direction.UP:
+                toReturn.y -= LENGTH;
+                break;
+            case Direction.DOWN:
+                toReturn.y += LENGTH;
+                break;
+            case Direction.LEFT:
+                toReturn.x += LENGTH;
+                break;
+            case Direction.RIGHT:
+                toReturn.x -= LENGTH;
+                break;
+        }
+
+        return toReturn;
+    }
 
 }
