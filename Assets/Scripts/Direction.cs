@@ -1,4 +1,6 @@
-﻿public enum Direction
+﻿using System.Numerics;
+
+public enum Direction
 {
     NONE,
     UP,

@@ -131,12 +131,12 @@ PrefabInstance:
     - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -45.801163
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -20.332554
+      value: 4.5
       objectReference: {fileID: 0}
     - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
         type: 3}
@@ -182,6 +182,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7721971081048131107, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
         type: 3}
@@ -263,7 +273,7 @@ Camera:
   far clip plane: 50
   field of view: 60
   orthographic: 1
-  orthographic size: 50
+  orthographic size: 20
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -319,8 +329,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 886791880}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0.27, y: -0.27, z: 0}
+  m_LocalScale: {x: 0.47212106, y: 0.5737495, z: 1}
   m_Children: []
   m_Father: {fileID: 2137433779}
   m_RootOrder: 1
@@ -473,12 +483,12 @@ PrefabInstance:
     - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
         type: 3}
@@ -524,6 +534,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7721971081048131106, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7721971081048131107, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
         type: 3}
@@ -593,8 +613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c2058d1096da3c40a750d76b10ec340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foodScript: {fileID: 1200162872}
-  playerScript: {fileID: 2143838444}
   snakeBodyPrefab: {fileID: 7721971081048131107, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
     type: 3}
 --- !u!4 &2137433779
@@ -662,15 +680,3 @@ SpriteShapeRenderer:
   m_LocalAABB:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 1048576, y: 1048576, z: 1048576}
---- !u!114 &2143838444 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8310456402260412571, guid: 63f83fec6bfe0fd46975f53a5ffbdb16,
-    type: 3}
-  m_PrefabInstance: {fileID: 1508391124}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d1111a95601a424e8b132fd1c355515, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
