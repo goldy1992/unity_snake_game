@@ -12,7 +12,7 @@ namespace Tests
         [Test]
         public void GameHandlerTestSimplePasses()
         {
-            GameObject newBody = Instantiate(snakeBodyPrefab, calculateNewPosition(currentTail), Quaternion.identity);
+          //  GameObject newBody = Instantiate(snakeBodyPrefab, calculateNewPosition(currentTail), Quaternion.identity);
             // Use the Assert class to test conditions
         }
 

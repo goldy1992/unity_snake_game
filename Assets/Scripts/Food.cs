@@ -19,10 +19,10 @@ public class Food : MonoBehaviour
 
     public void GenerateRandomPositon()
     {
-        Debug.Log("Parent position: " + transform.parent.localPosition);
+    //    Debug.Log("Parent position: " + transform.parent.localPosition);
         Vector3 randomVector = new Vector3(Random.Range(-5, 5), Random.Range(-5, 5));
         //   Debug.Log("transforming random, x: " + randomVector.x + ", y: " + randomVector.y);
-        Debug.Log("food created: " + randomVector.x + ", " + randomVector.y);
+     //   Debug.Log("food created: " + randomVector.x + ", " + randomVector.y);
         //transform.position = zeroVector;
         transform.localPosition = randomVector;
     }
